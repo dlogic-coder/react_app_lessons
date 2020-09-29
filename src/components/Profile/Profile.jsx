@@ -4,7 +4,7 @@ import s from './Profile.module.css';
 
 const Profile = () => {
     return (
-        <div className={s.content}>
+        <div>
             <div>
                 <img src='http://localhost:3000/human-brain.jpg' />
             </div>
