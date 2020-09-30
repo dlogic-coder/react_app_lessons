@@ -1,16 +1,12 @@
 import React from 'react';
 import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from './MyPosts/ProfileInfo/ProfileInfo';
 import s from './Profile.module.css';
 
 const Profile = () => {
     return (
         <div>
-            <div>
-                <img src='http://localhost:3000/human-brain.jpg' />
-            </div>
-            <div>
-                ava + description
-            </div>
+            <ProfileInfo />
             <MyPosts />
         </div>
     );
