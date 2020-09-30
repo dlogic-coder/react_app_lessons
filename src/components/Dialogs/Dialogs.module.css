@@ -3,6 +3,10 @@
    grid-template-columns: 2fr 10fr;
 }
 
+.dialog {
+   
+}
+
 .dialogs__items {
    padding: 10px;
 }
@@ -16,6 +20,6 @@
 }
 
 
-.messages .message {
-
+.message {
+   color: white;
 }
