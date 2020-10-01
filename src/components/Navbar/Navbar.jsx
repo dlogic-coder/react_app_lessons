@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './Navbar.module.css';
 
-// in row 12 shown using two css styles, as class="item active"
+// in row 13 shown using two css styles, as class="item active"
 
 const Navbar = () => {
     return (
