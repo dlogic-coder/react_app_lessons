@@ -1,4 +1,4 @@
-import { rerenderEntireTree } from "../render";
+let rerenderEntireTree = () => { }
 
 let state = {
    profilePage: {
@@ -42,6 +42,11 @@ export let addPost = () => {
 export let updateNewPostText = (newText) => {
    state.profilePage.newPostText = newText;
    rerenderEntireTree(state);
+}
+
+// This is pattern "Observer"
+export let subscribe = (observer) => {
+   rerenderEntireTree = observer;
 }
 
 export default state;
