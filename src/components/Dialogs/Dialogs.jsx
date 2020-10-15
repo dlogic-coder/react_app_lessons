@@ -9,7 +9,6 @@ const Dialogs = (props) => {
 
    let dialogsElements = state.dialogs.map(dialog => <DialogItem id={dialog.id} name={dialog.name} />);
    let messagesElements = state.messages.map(msg => <Message message={msg.message} />);
-   
    let newMessageBody = state.newMessageBody;
 
    let onSendMessageClick = () => {
@@ -29,9 +28,11 @@ const Dialogs = (props) => {
          <div className={s.messages}>
             <div>{messagesElements}</div>
             <div>
-               <div><textarea value={newMessageBody}
-                  onChange={onNewMessageChange}
-                  placeholder="Enter your message"></textarea></div>
+               <div>
+                  <textarea value={newMessageBody}
+                            onChange={onNewMessageChange}
+                            placeholder="Enter your message" />
+               </div>
                <div><button onClick={onSendMessageClick}>Send</button></div>
             </div>
          </div>
