@@ -11,6 +11,8 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
 
+    //let stateCopy;
+
     // state = this._state.profilePage - такая замена тут будет
     switch (action.type) {
         case ADD_POST:
@@ -19,12 +21,25 @@ const profileReducer = (state = initialState, action) => {
                 message: state.newPostText,
                 likesCount: 0
             };
-            state.posts.push(newPost);
-            state.newPostText = '';
-            return state;
+
+            return {
+                ...state,
+                newPostText: '',
+                posts: [...state.posts, newPost]
+            }
+            //stateCopy.posts = [...state.posts];     // copy array "state.posts"
+            //stateCopy.posts.push(newPost);
+            //stateCopy.newPostText = '';
+            //return stateCopy;
+
         case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText;
-            return state;
+            return {
+                ...state,
+                newPostText: action.newText
+            }
+            //stateCopy.newPostText = action.newText;
+            //return stateCopy;
+
         default:
             return state;
     }
