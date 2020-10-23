@@ -11,8 +11,6 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
 
-    //let stateCopy;
-
     // state = this._state.profilePage - такая замена тут будет
     switch (action.type) {
         case ADD_POST:
@@ -27,18 +25,12 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: '',
                 posts: [...state.posts, newPost]
             }
-            //stateCopy.posts = [...state.posts];     // copy array "state.posts"
-            //stateCopy.posts.push(newPost);
-            //stateCopy.newPostText = '';
-            //return stateCopy;
 
         case UPDATE_NEW_POST_TEXT:
             return {
                 ...state,
                 newPostText: action.newText
             }
-            //stateCopy.newPostText = action.newText;
-            //return stateCopy;
 
         default:
             return state;

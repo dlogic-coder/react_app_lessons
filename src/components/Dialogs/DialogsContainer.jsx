@@ -1,7 +1,6 @@
 import React from 'react';
 import {sendMessageCreator, updateNewMessageBodyCreator} from '../../redux/dialogsReducer';
 import Dialogs from "./Dialogs";
-//import StoreContext from "../../StoreContext";
 import {connect} from "react-redux";
 
 /*const DialogsContainer = () => {
@@ -30,7 +29,6 @@ import {connect} from "react-redux";
     );
 }*/
 
-//let f1 = (state) => {
 let mapStateToProps = (state) => {               // here "state = store.getState()"
     return {
         dialogsPage: state.dialogsPage
