@@ -1,42 +1,15 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 
 let initialState = {
-    users: [/*
-        {
-            id: 1,
-            photoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/Avatar_2_logo.jpg/220px-Avatar_2_logo.jpg',
-            followed: false,
-            fullName: 'Andrew T.',
-            status: 'I am a boss',
-            location: {city: 'Kyiv', country: 'Ukraine'}
-        },
-        {
-            id: 2,
-            photoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/Avatar_2_logo.jpg/220px-Avatar_2_logo.jpg',
-            followed: false,
-            fullName: 'Dmytro K.',
-            status: 'SEO',
-            location: {city: 'Kharkiv', country: 'Ukraine'}
-        },
-        {
-            id: 3,
-            photoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/Avatar_2_logo.jpg/220px-Avatar_2_logo.jpg',
-            followed: true,
-            fullName: 'Maxim K.',
-            status: 'Frontend',
-            location: {city: 'Odessa', country: 'Ukraine'}
-        },
-        {
-            id: 4,
-            photoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/Avatar_2_logo.jpg/220px-Avatar_2_logo.jpg',
-            followed: true,
-            fullName: 'Vasyl B.',
-            status: 'Backend',
-            location: {city: 'Lviv', country: 'Ukraine'}
-        }
-    */]
+    users: [],
+    // след. поля добавили когда "pagination" рассматривали (пока значения жестко хардкодим для тестирования)
+    pageSize: 100,            // количество юзеров настранице
+    totalUsersCount: 0,    // всего юзеров
+    currentPage: 1          // текущая страница
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -68,14 +41,26 @@ const usersReducer = (state = initialState, action) => {
                 })
             }
         case SET_USERS:
-            return {...state, users: [...state.users, ...action.users]}        /// ** (.users)
+            //return {...state, users: [...state.users, ...action.users]}     /// добавляем в конец массива новых
+            return {...state, users: action.users}                         /// а тут просто перезатираем
+
+        case SET_CURRENT_PAGE:
+            return {...state, currentPage: action.currentPage}      /// ** (.currentPage)
+
+        case SET_TOTAL_USERS_COUNT:
+            return {...state, totalUsersCount: action.count}       /// *** (.currentPage)
+
         default:
             return state;
     }
 }
 
+// ..AC - означает action creator
 export const followAC = (userId) => ({type: FOLLOW, userId})         /// *
 export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})
-export const setUsersAC = (users) => ({type: SET_USERS, users})      /// **
+export const setUsersAC = (users) => ({type: SET_USERS, users})
+export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})     /// **
+export const setTotalUsersCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount})     /// ***
+
 
 export default usersReducer;
