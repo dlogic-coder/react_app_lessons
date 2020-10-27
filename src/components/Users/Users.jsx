@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import styles from './Users.module.css';
 import userPhoto from '../../assets/img/no_user.png';
 
@@ -39,8 +39,8 @@ let Users = (props) => {
                         <div>{u.status}</div>
                     </span>
                     <span>
-                        <div>{"u.location.city"}</div>
-                        <div>{"u.location.country"}</div>
+                        <div>{'u.location.city'}</div>
+                        <div>{'u.location.country'}</div>
                     </span>
                 </span>
             </div>)
